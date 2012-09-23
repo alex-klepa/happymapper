@@ -2,11 +2,14 @@ require 'nokogiri'
 require 'date'
 require 'time'
 
+require 'happymapper/anonymous_mapper'
+
 class Boolean; end
 class XmlContent; end
 
 module HappyMapper
-
+  extend AnonymousMapper
+  
   DEFAULT_NS = "happymapper"
 
   def self.included(base)
@@ -16,7 +19,7 @@ module HappyMapper
 
     base.extend ClassMethods
   end
-
+  
   module ClassMethods
     
     #
@@ -612,7 +615,6 @@ module HappyMapper
     write_out_to_xml ? builder.to_xml : builder
     
   end
-  
   
 end
 
